@@ -4,9 +4,7 @@ class TabLink {
     this.tabElement = tabElement;
 
     // Get the `data-tab` value from this.tabElement and store it here
-    this.tabData = document.querySelector(
-      `.tab[data-tab='${this.tabElement.dataset.tab}']`
-    );
+    this.tabData = this.tabElement.dataset.tab;
 
     // We need to find out if a user clicked 'all' cards or a specific category.  Follow the instructions below to accomplish this task:
 
@@ -17,7 +15,9 @@ class TabLink {
       this.cards = document.querySelectorAll(".card");
     } else {
       // else if `all` is false, only select the cards with matching this.tabData values
-      this.cards = this.tabData;
+      this.cards = document.querySelectorAll(
+        `.card[data-tab='${this.tabData}']`
+      );
     }
 
     // <- Delete this comment block when you work on the if statement
